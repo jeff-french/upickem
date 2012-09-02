@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/kendo.mobile.all.min.css' />
+  </head>
+  <body>
+    <div id="main" data-role="view" data-title="U-Pick-Em!" data-layout="main-layout">
+        <h2>Set it up:</h2>
+        <p>How many cards we talking about here?</p>
+        <form action="/numbers" method="post">
+             <ul data-role="listview" data-style="inset">
+                <li>
+                    <select>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                    </select>
+                    Cards
+                </li>
+             </ul>
+            <input type="submit" value="Submit" />
+        </form>
+    </div>
+
+    <div id="numbers" data-role="view" data-title="U-Pick-Em!" data-layout="main-layout">
+        <div id="scrollview-container">
+            <div data-role="scrollview">
+                <% numbers.forEach(function(numberSet){ %>
+                <div data-role="page">
+                    <ul data-role="listview">
+                        <% numberSet.forEach(function(num){%>
+                            <li><%=num%></li>
+                        <%});%>
+                    </ul>
+                </div>
+                <% }); %>
+            </div>
+        </div>
+    </div>
+
+    <div data-id="main-layout" data-role="layout">
+        <div data-role="header">
+            <div data-role="navbar">
+                <span data-role="view-title"></span>
+            </div>
+        </div>
+
+    </div>
+    <style scoped>
+            .buttonAppearance .km-button:not(.km-back)
+            {
+                width: 90%;
+                box-sizing: border-box;
+                -moz-box-sizing: border-box;
+                -webkit-box-sizing: border-box;
+            }
+    </style>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+    <script src="/javascripts/kendo.mobile.min.js"></script>
+    <script>
+        var initView = "<%= viewName %>";
+        var app = new kendo.mobile.Application($(document.body), {hideAddressBar: true, initial: initView});
+
+    </script>
+
+
+  </body>
+</html>
