@@ -8,10 +8,21 @@ function Numbers(){
 
 Numbers.prototype = {
     getNumbers: function(req, res){
-        var nums = [
-            [1,34,54,23],
-            [65,23,24,2]
-        ]
-        res.render('index',{title: "Your Numbers", numbers: nums, viewName: 'numbers'});
+        var cards = req.body.cards;
+        var total = cards * 9;
+        var options = {
+            min: 1,
+            max: 75,
+            col: 9,
+            num: total
+        };
+        
+        random.generateIntegers(randomCallback, options);
+        
+        
+        function randomCallback(integers){
+            var nums = integers;
+            res.render('index',{title: "Your Numbers", numbers: nums, viewName: 'numbers'});
+        }
     }
 }

@@ -11,7 +11,7 @@
         <form action="/numbers" method="post">
              <ul data-role="listview" data-style="inset">
                 <li>
-                    <select>
+                    <select id="cards" name="cards">
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -31,7 +31,7 @@
     </div>
 
     <div id="numbers" data-role="view" data-title="U-Pick-Em!" data-layout="main-layout">
-        <div id="scrollview-container">
+        <div id="scrollview-container" data-page="2">
             <div data-role="scrollview">
                 <% numbers.forEach(function(numberSet){ %>
                 <div data-role="page">
