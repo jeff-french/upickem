@@ -8,7 +8,7 @@
     <link rel='stylesheet' href='/stylesheets/kendo.mobile.all.min.css' />
   </head>
   <body>
-    <div id="main" data-role="view" data-title="U-Pick-Em!">
+    <div id="main" data-role="view" data-title="U-Pick-Em!" data-init="initForm">
         <div data-role="header">
             <div data-role="navbar">
                 <span data-role="view-title"></span>
@@ -87,6 +87,10 @@
         
         var initView = "<%= viewName %>";
         var app = new kendo.mobile.Application($(document.body), {hideAddressBar: true, initial: initView});
+        
+        function initForm(){
+            $("#cards").kendoDropDownList();
+        }
 
         function submit(){
             $('#cardsForm').submit();
