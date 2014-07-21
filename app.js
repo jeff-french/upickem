@@ -7,8 +7,7 @@ var express = require('express')
   , routes = require('./routes')
   , http = require('http')
   , path = require('path')
-  , Numbers = require('./routes/numbers')
-  , numbers = new Numbers();
+  , numbers = require('./routes/numbers');
 
 var app = express();
 
